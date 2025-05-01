@@ -13,9 +13,9 @@ It is highly recommended to bind to `localhost` and a firewalled port, access
 the web output only on the same local machine, and terminate the process
 immediately after gathering the needed `env` data.
 
-While running, the following pages are served:
-`/args`          --  The ARGV elements from the process's invocation
-`/env`           --  The process's environment variables
-`/headers`       --  Request headers received
-`/process`       --  The `PID` (process ID) and `PPID` (parent `PID`)
-`/` (all others) --  This document
+While running, the following pages are served:  
+`/args`          --  The ARGV elements from the process's invocation  
+`/env`           --  The process's environment variables  
+`/headers`       --  Request headers received  
+`/process`       --  The `PID` (process ID) and `PPID` (parent `PID`)  
+`/` (all others) --  This document  
