@@ -51,12 +51,17 @@ func process(out http.ResponseWriter, _ *http.Request) {
 	fmt.Fprintf(out, "parent: %d\n", os.Getppid())
 }
 
+func quit(_ http.ResponseWriter, _ *http.Request) {
+	os.Exit(0)
+}
+
 func main() {
 	http.HandleFunc("/", doc)
 	http.HandleFunc("/args", args)
 	http.HandleFunc("/env", env)
 	http.HandleFunc("/headers", headers)
 	http.HandleFunc("/process", process)
+	http.HandleFunc("/quit", quit)
 
 	addr := flag.String("bind", "localhost", "Listener address")
 	port := flag.Uint("port", 9080, "Listener port")
