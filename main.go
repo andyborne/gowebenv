@@ -9,6 +9,9 @@ import (
 	_ "embed"
 )
 
+//go:embed LICENSE
+var license []byte
+
 //go:embed README.md
 var readme []byte
 
@@ -55,6 +58,10 @@ func quit(_ http.ResponseWriter, _ *http.Request) {
 	os.Exit(0)
 }
 
+func rights(out http.ResponseWriter, _ *http.Request) {
+	fmt.Fprintf(out, "%s", license)
+}
+
 func main() {
 	http.HandleFunc("/", doc)
 	http.HandleFunc("/args", args)
@@ -62,6 +69,7 @@ func main() {
 	http.HandleFunc("/headers", headers)
 	http.HandleFunc("/process", process)
 	http.HandleFunc("/quit", quit)
+	http.HandleFunc("/rights", rights)
 
 	addr := flag.String("bind", "localhost", "Listener address")
 	port := flag.Uint("port", 9080, "Listener port")

@@ -1,6 +1,6 @@
 This is a debugging tool for examining the environment that a process is
 launched in, e.g. by Docker, `systemd`, `supervisor`, or some other process
-manager.
+manager, and what client applications have sent it in a request.
 
 Since a likely use case is to check that secrets are successfully passed in,
 
@@ -19,4 +19,5 @@ While running, the following pages are served:
 `/headers`       --  Request headers received  
 `/process`       --  The `PID` (process ID) and `PPID` (parent `PID`)  
 `/quit`          --  End the process  
+`/rights`        --  Display copyright/license info  
 `/` (all others) --  This document  
