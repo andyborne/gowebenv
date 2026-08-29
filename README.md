@@ -18,6 +18,7 @@ While running, the following pages are served:
 `/env`           --  The process's environment variables  
 `/headers`       --  Request headers received  
 `/process`       --  The `PID` (process ID) and `PPID` (parent `PID`)  
+`/query`         --  A pretty-print of received `?key=value` pairs in URI  
 `/quit`          --  End the process  
 `/rights`        --  Display copyright/license info  
 `/` (all others) --  This document  

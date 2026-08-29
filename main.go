@@ -54,6 +54,16 @@ func process(out http.ResponseWriter, _ *http.Request) {
 	fmt.Fprintf(out, "parent: %d\n", os.Getppid())
 }
 
+func query(out http.ResponseWriter, req *http.Request) {
+	q := req.URL.Query()
+	for k := range q {
+		fmt.Fprintf(out, "\"%s\" (%d):\n", k, len(q[k]))
+		for v := range q[k] {
+			fmt.Fprintf(out, "[%d] \"%s\"\n", v, q[k][v])
+		}
+	}
+}
+
 func quit(_ http.ResponseWriter, _ *http.Request) {
 	os.Exit(0)
 }
@@ -68,6 +78,7 @@ func main() {
 	http.HandleFunc("/env", env)
 	http.HandleFunc("/headers", headers)
 	http.HandleFunc("/process", process)
+	http.HandleFunc("/query", query)
 	http.HandleFunc("/quit", quit)
 	http.HandleFunc("/rights", rights)
 
